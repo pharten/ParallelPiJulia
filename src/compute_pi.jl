@@ -1,5 +1,4 @@
-#@everywhere 
-function compute_pi(N::Int)
+@everywhere function compute_pi(N::Int)
     """
     Compute pi with a Monte Carlo simulation of N darts thrown in [-1,1]^2
     Returns estimate of pi
