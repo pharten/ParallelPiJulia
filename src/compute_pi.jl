@@ -14,5 +14,5 @@
         end
     end
 
-    return n_landed_in_circle / N * 4.0    
+    return (n_landed_in_circle / N) * 4.0    
 end
