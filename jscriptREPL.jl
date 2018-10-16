@@ -11,3 +11,4 @@ include("src\\parallel_pi.jl")
 @time ppi = parallel_pi(100000000, 4)
 
 println(ppi)
+
