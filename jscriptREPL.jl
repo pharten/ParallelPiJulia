@@ -8,6 +8,6 @@ include("src\\parallel_pi.jl")
 #addprocs(3)
 #the above two lines seems to be implemented by the @distributed macro
 
-@time ppi = parallel_pi(100000000, 4)
+@time ppi, std = parallel_pi(10000000000, 6)
 
-println(ppi)
+println(ppi," +/- ",std)
