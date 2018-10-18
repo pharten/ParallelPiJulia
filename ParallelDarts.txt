@@ -1,0 +1,39 @@
+I have run the enclosed Julia ParallelPI program to determine the speedup
+of an embarrassingly parallel Markovian program on a Windows desktop that
+has 2 CPU's with 10 cores each.  Eclipse IDE Java 2018-09 with JuliaDT
+installed was used to run the ParallelPi program.
+
+ParallelPi throws darts randomly at a dartboard. The number of darts that
+fall within the unit circle is the area of the unit circle = Pi*(r**2)
+The total number of darts is the area of the square around the unit
+circle = 4 * (r**2). From this, it can be seen that 4 times one divided
+by the other = Pi. This relation ship is used to calculate Pi to extreme
+accuracy along with an uncertainty which is only dependent on the number
+thrown. Since the results of each simulation are totally independent,
+the final Pi can be averaged over individual Pi's along with the
+uncertainty calculated from the standard deviation.
+
+The results were:
+
+  Number of darts  Number of cores  Runtime(secs)
+	1x10**10			1				55.2
+						2				35.0
+						3				28.5
+						4				23.3
+						5				20.1
+						6				18.2
+						
+	1x10**11			1				518.6
+						2				244.6
+						3				173.2
+						4				130.0
+						5				114.8
+						6				101.0
+						7				 99.7
+						8				 75.8
+	
+This shows an almost linear relationship between the speedup and the
+number of cores.  By definition, a linear relationship is embarrassingly
+parallel.  The speedup is the runtime using 1 processor divide by the
+runtime using n processors.
+				 
