@@ -21,9 +21,15 @@ function parallel_pi(N::Int, ncores::Int)
        sum_of_pi_sqs += ppi[i]*ppi[i]
     end
     
-    pi_avg = sum_of_pis / ncores
-    pi_sq_avg = sum_of_pi_sqs / ncores
-    std = sqrt((pi_sq_avg - pi_avg*pi_avg) / ncores)
+    if (ncores <= 1)
+       pi_avg = sum_of_pis / ncores
+       uncert = 0
+    else
+       pi_avg = sum_of_pis / ncores
+       pi_sq_avg = sum_of_pi_sqs / ncores
+       stdsq = pi_sq_avg - pi_avg*pi_avg
+       uncert = sqrt(stdsq/ncores)
+    end
 
-    return pi_avg, std  # average value
+    return pi_avg, uncert  # average value
 end
