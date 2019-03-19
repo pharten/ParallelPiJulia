@@ -1,3 +1,7 @@
+
+ncores = 32
+addprocs(ncores) # nCPUs need to be set before parallel macros appear
+
 include("src\\compute_pi.jl")
 include("src\\parallel_pi.jl")
 
@@ -5,10 +9,11 @@ include("src\\parallel_pi.jl")
 #the above seems to be necessary to accept the parallel macros
 
 #using Distributed
-#addprocs(3)
+
 #the above two lines seems to be implemented by the @distributed macro
+println("number of threads = ",Threads.nthreads())
 
-@time ppi, uncert = parallel_pi(100000000000, 8)
+@time ppi, uncert = parallel_pi(100000000000, ncores)
 
-println(pi,", ppi = ",ppi," +/- ",uncert)
+println(pi,", ppi = ",ppi," +/- ",uncert,", diff = ",abs(pi-ppi))
 

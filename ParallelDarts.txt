@@ -1,6 +1,6 @@
 I have run the enclosed ParallelPiJulia program to determine the speedup
 of an embarrassingly parallel Markovian program on a Windows desktop that
-has 2 CPU's with 10 cores each.  Eclipse IDE Java 2018-09 with JuliaDT
+has 2 CPU's with 20 cores each.  Eclipse IDE Java 2018-09 with JuliaDT
 installed was used to run the ParallelPi program.
 
 ParallelPi throws darts randomly at a dartboard. The number of darts that
@@ -26,16 +26,24 @@ The results were:
 	1x10**11			1				518.6
 						2				244.6
 						3				173.2
-						4				130.0
-						5				114.8
-						6				101.0
-						7				 99.7
-						8				 75.8
+						4				123.6
+						5				100.4
+						6				 88.7
+						7				 77.1
+						8				 68.9
+						16				 45.9
+						24				 42.8
+						32				 39.8
+						
+	1x10**12			8				607.9
+						16				333.4
+						24				275.7
+						32				247.9		
 	
 This shows an almost linear relationship between the speedup and the
 number of cores.  By definition, a linear relationship is embarrassingly
 parallel.  The speedup is the runtime using 1 processor divided by the
 runtime using n processors.
 
-All Pi calculations where within a few uncertainties of Pi.
+All Pi calculations were within a few uncertainties of Pi.
 				 
