@@ -1,3 +1,5 @@
+using Distributed
+
 using SharedArrays
 
 function parallel_pi(N::Int, ncores::Int)
