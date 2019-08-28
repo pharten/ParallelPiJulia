@@ -11,10 +11,10 @@ function parallel_pi(N::Int, ncores::Int)
 
     ppi = SharedArray{Float64}(ncores)
     m = div(N,ncores)
+    println(" m = ",m)
 
     # compute sum of pi's estimated among all cores in parallel
     @sync @distributed for i=1:ncores
-       println(" m = ",m)
        ppi[i] = compute_pi(m)
     end
     
