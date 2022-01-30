@@ -4,14 +4,16 @@ has 2 CPU's with 20 cores each.  Eclipse IDE Java 2018-09 with JuliaDT
 installed was used to run the ParallelPi program.
 
 ParallelPi throws darts randomly at a dartboard. The number of darts that
-fall within the unit circle is the area of the unit circle = Pi*(r**2)
-The total number of darts is the area of the square around the unit
-circle = 4 * (r**2). From this, it can be seen that one divided by the
-other times 4 = Pi. This relation ship is used to calculate Pi to extreme
-accuracy along with an uncertainty which is only dependent on the number
-of darts thrown. Since the results of each Markovian path are totally
-independent, the final Pi can be averaged over individual Pi's along with
-an uncertainty calculated from the standard deviation.
+fall within the unit circle is the approximately the area of the unit
+circle = Pi*(r**2). The total number of darts thrown is approximately the
+area of the square enclosing the unit circle = 4 * (r**2). From this, it
+can be seen that one area divided by the other is Pi / 4.
+
+This relationship can be used to calculate Pi to extreme accuracy along
+with an uncertainty which is only dependent on the number of darts thrown.
+Since the results of each Markovian path are totally independent, the final
+Pi can be averaged over individual Pi's along with an uncertainty calculated from the standard deviation of Pi values generated
+by each processor (core).
 
 The results were:
 
@@ -46,4 +48,9 @@ parallel.  The speedup is the runtime using 1 processor divided by the
 runtime using n processors.
 
 All Pi calculations were within a few uncertainties of Pi.
+
+**Note that the timing was four times longer after changing from Julia 1.2
+to Julia 1.3.  The new capability of generating thread-safe random numbers
+takes four times longer. One way around this problem is shown at:
+https://github.com/JuliaLang/julia/issues/34216
 				 
