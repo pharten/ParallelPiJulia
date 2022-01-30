@@ -1,5 +1,3 @@
-using Distributed
-
 using SharedArrays
 
 function parallel_pi(N::Int, ncores::Int)
@@ -10,9 +8,10 @@ function parallel_pi(N::Int, ncores::Int)
 # @distributed macro is used instead of @parallel macro
 
     ppi = SharedArray{Float64}(ncores)
-    m = div(N,ncores)
-    println(" m = ",m)
 
+    m = div(N,ncores)
+    println(" m =  ",m)
+    
     # compute sum of pi's estimated among all cores in parallel
     @sync @distributed for i=1:ncores
        ppi[i] = compute_pi(m)
