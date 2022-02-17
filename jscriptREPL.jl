@@ -1,7 +1,12 @@
 using Distributed
 
-ncores = 2
+ncores = 8
 addprocs(ncores)
+
+#import Pkg
+#Pkg.add("DecisionTree")
+#import DecisionTree
+#@everywhere using DecisionTree  #push code to all clients
 
 include("src\\compute_pi.jl")
 include("src\\parallel_pi.jl")
